@@ -126,7 +126,9 @@ class QuizController extends Zend_Controller_Action
                             // Make message
                             $this->_helper->flashMessenger->addMessage('Your answer was right!');
                             // Redirect to question page
-                            return $this->_helper->redirector->gotoRoute(array('question_id' => $question_id), 'Quiz_View_Question');
+                            return $this->_helper->redirector->gotoRoute(array(
+                                'question_id' => $question_id,
+                            ), 'Quiz_View_Question');
                         }
                     }
 
