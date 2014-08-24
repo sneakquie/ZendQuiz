@@ -1,0 +1,10 @@
+<p><a href="/" class="btn btn-primary btn-xs"><< Back</a></p>
+<?php if(isset($this->message)):?>
+	<div class="alert alert-success" role="alert"><?php echo $this->message[0];?></div>
+<?php endif;?>
+<h3><?php echo $this->escape($this->question->question);?></h3><br/>
+<?php if(isset($this->danger)):?>
+	<div class="alert alert-warning" role="alert"><?php echo $this->danger;?></div>
+<?php elseif(isset($this->form)):?>
+	<?php echo $this->form;?>
+<?php endif;?>

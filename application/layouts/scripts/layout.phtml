@@ -1,0 +1,41 @@
+<?php echo $this->doctype();?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Quiz</title>
+  <?php echo $this->headLink()->appendStylesheet($this->baseUrl . '/css/bootstrap.min.css');?>
+  <?php echo $this->headScript()->appendFile('//code.jquery.com/jquery-1.11.0.min.js')
+                                ->appendFile($this->baseUrl . '/js/bootstrap.min.js');?>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<?php echo $this->url();?>">Home</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="<?php echo $this->url();?>">Questions</a></li>
+        <li><a href="<?php echo $this->url(array(), 'Quiz_Add_Question');?>"><span class="glyphicon glyphicon-pencil"></span> Add</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="badge badge-warning" style="background-color:#f0ad4e;"><span class="glyphicon glyphicon-star"></span> <?php echo $this->quiz_points;?></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container" style="margin-top:60px;max-width:60%;">
+  <?php echo $this->layout()->content ?>
+</div>
+
+</body>
+</html>

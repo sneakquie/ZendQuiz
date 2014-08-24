@@ -1,0 +1,31 @@
+<script type="text/javascript">
+$(function() {
+	$('[data-toggle="tooltip"]').tooltip();
+});
+</script> 
+<p><a href="<?php echo $this->url(array(), 'Quiz_Add_Question');?>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span> Add Your Question</a></p>
+<?php if(isset($this->message)):?>
+	<div class="alert alert-success" role="alert"><?php echo $this->message[0];?></div>
+<?php endif;?>
+<?php if(sizeof($this->entries) > 0):?>
+<dl>
+    <?php foreach ($this->entries as $entry): ?>
+    <div class="media">
+      <a class="pull-left" href="<?php echo $this->url(array('question_id' => $this->escape($entry->id)), 'Quiz_View_Question');?>">
+        <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIi8+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+" style="width: 64px; height: 64px;">
+      </a>
+      <?php if(isset($this->done_questions) && in_array($entry->id, $this->done_questions)):?>
+      <span class="pull-right glyphicon glyphicon-ok" style="border-radius:10px;background-color:#5cb85c;color:#fff;padding:3px;" data-toggle="tooltip" data-placement="right" title="You have already answered this question"></span>
+  	  <?php else:?>
+  	  <a href="<?php echo $this->url(array('question_id' => $this->escape($entry->id)), 'Quiz_View_Question');?>" class="btn btn-default btn-xs pull-right">Answer >></a></i></dt>
+  	  <?php endif;?>
+      <div class="media-body">
+        <h4 class="media-heading"><?php echo $this->escape($entry->question);?></h4>
+      </div>
+    </div>
+    <?php endforeach ?>
+    
+</dl>
+<?php else:?>
+    There is no questions.
+<?php endif;?>
